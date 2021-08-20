@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <script>
+        let num1 = Number(prompt("Digite um número:"))
+        let num2 = Number(prompt("Digite o segundo número:"))
+        let op = String (prompt("Digite a operação que deseja realizar:"))
+
+        if (isNaN (num1))
+        {
+            alert('Esse valor não é válido!')
+        }
+        else 
+        {
+            switch(op)
+            {
+                case '+':
+                    document.write(num1 + num2)
+                    break
+                
+                case '-':
+                    document.write(num1-num2)
+                    break
+                
+                case '*':
+                case'X':
+                case'x':
+                    document.write(num1 * num2)
+                    break
+
+                case '/':
+                case':': 
+                    document.write(num1/num2)
+                    break
+                default: //"else" do switch
+                alert('ERRO,esse operador está incorreto')
+
+            }
+        }
+        /*
+        else if (isNaN (num2))
+        {
+            alert('Esse valor não é válido!')
+        }
+        else if(op === "+")
+        {
+            document.write(num1 + num2)
+        }
+        else if (op === "-")
+        {
+            document.write(num1 - num2)
+        }
+        else if (op === "X" || op === "*" || op === "x")
+        {
+            document.write( num1 * num2)
+        }
+        else if (op === "/" || op === ":")
+        {
+            document.write(num1 / num2)
+        }
+        else if (op != "+" || op != "-" || op != "*" || op != "X" || op !="x" || op != "/" || op != ":")
+        {
+            alert("Esse símbolo não é válido!")
+        }
+        */
+/*
+Solicite ao usuário para informar dois números e um operador
+matemático. Você usará três prompt(), um para cada número e
+o terceiro para o operador.
+Aceite os seguintes operadores:
++ => adição
+- => subtração
+*, X ou x => multiplicação
+/ ou : => divisão
+Efetue o cálculo apropriado de acordo com o operador informado
+e informe o resultado usando document.write().
+*/
+
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
