@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <script>
+        let num1 = Number(prompt("Digite um número:"))
+        let num2 = Number(prompt("Digite o segundo número:"))
+        let op = String (prompt("Digite a operação que deseja realizar:"))
+        let resultado 
+
+        if (isNaN (num1))
+        {
+            alert('Esse valor não é válido!')
+        }
+        else 
+        {
+            switch(op)
+            {
+                case '+':
+                    resultado = (num1 + num2)
+                    break
+                
+                case '-':
+                    resultado = (num1-num2)
+                    break
+                
+                case '*':
+                case'X':
+                case'x':
+                    resultado = (num1 * num2)
+                    break
+
+                case '/':
+                case':': 
+                    resultado = (num1/num2)
+                    break
+                default: //"else" do switch
+                alert('ERRO,esse operador está incorreto')
+
+            }
+        }
+                //document.write('O resultado é:' + resultado )
+        
+
+                //string templates são strings delimitada pelo acento agudo `` (crase)
+                //e que aceitam,dentro delas,a interpolação de variáveis usando o 
+                //código ${}
+                //exemplo
+                if(resultado !== undefined){ 
+                document.write(`${num1} ${op} ${num2} é igual a ${resultado}`)
+                }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
