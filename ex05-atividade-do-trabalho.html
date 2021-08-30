@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 05</title>
+    <script>
+        //Recentemente, as placas de automóveis no Brasil passaram a usar
+        //o chamado "modelo Mercosul".
+        //Nesse modelo, o segundo dígito numérico do modelo anterior passou
+        //a ser representado por uma letra. A conversão é regida pela tabela:
+        //Dígito
+        //Letra  0 A 1 B 2 C 3 D 4 E 5 F 6 G 7 H 8 I 9 J 
+        //Assim, uma placa tradicional ABC-1234, no formato do padrão Mercosul,
+        //ficaria ABC-1C34.
+        //Peça para o usuário informar um dígito válido entre 0 a 9. Com o loop do..while, 
+        //faça a validação, repetindo a solicitação até que a resposta 
+        //obtida seja válida.Em seguida, usando a estrutura de decisão switch..case, 
+        //informe ao usuário a letra correspondente ao dígito informado.
+
+        let num1
+        let resp
+         
+        do{
+            num1 = parseInt(prompt('Insira um número de 0 a 9:'))
+        } while (isNaN (num1) || num1 > 9) 
+        
+        
+            switch(num1)
+            {
+                case 0:
+                    resp = "A"
+                        break
+
+                case 1: 
+                    resp = 'B'
+                        break
+                        
+                case 2: 
+                    resp = 'C'
+                        break
+                
+                case 3: 
+                    resp = 'D'
+                        break
+                
+                case 4:
+                    resp = 'E'
+                        break 
+                
+                case 5:
+                    resp = 'F'
+                        break
+                
+                case 6:
+                    resp = 'G'
+                        break
+                
+                case 7:
+                    resp = 'H'
+                        break 
+
+                case 8: 
+                    resp = 'I'
+                        break 
+                
+                case 9: 
+                    resp = 'J'
+                        break 
+                
+                default: 
+                    alert('ERRO: número inválido')
+
+            } 
+            window.alert(`Equivalente ao número que você digitou (${num1}),verificamos que é a letra: ${resp}`)
+
+
+        
+        
+
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
