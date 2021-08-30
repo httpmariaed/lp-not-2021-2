@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 06</title>
+    <script>
+
+        let comprimento
+
+        do{
+            comprimento = parseInt(prompt('Comprimento da rodovia: (> 200 km'))
+        } while(isNaN(comprimento) || comprimento  <= 200 )
+
+        let km = 1
+
+        while(km <= comprimento){
+            if(km % 31 === 0){
+                document.write(`O Km ${km} tem pedágio <br>`)
+            }
+
+            if(km % 23 === 0) {
+                document.write(`O km ${km} tem posto de atendimento ao usuário <br>`)
+            }
+            km ++
+        }
+            </script>
+</head>
+<body>
+    
+</body>
+</html>
