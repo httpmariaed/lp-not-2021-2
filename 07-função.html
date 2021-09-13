@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funções</title>
+    <script>
+        let fatorial
+        let num = 5
+
+        fatorial = 1 
+        for(let i = num; i > 1; i --) {
+            fatorial *+ i  
+        }
+        document.write(`${num}! é igual a ${fatorial} <br>`)
+
+
+
+        /************************************************/
+        //calculando o fatorial  de 8 
+        let fatorial
+        let num = 8
+
+        fatorial = 1 
+        for(let i = num; i > 1; i --) {
+            fatorial *+ i  
+        }
+        document.write(`${num}! é igual a ${fatorial} <br>`)
+
+
+        /*********************************************/
+        // princípio DRY = don't repeat yourself (Não se repita)
+
+        //declaração de função
+        //calcFatorial --> nome da função 
+        //num --> parâmetro ou argumento (Dado de entrada) 
+        function calcFatorial(num){
+            fatorial = 1 
+        for(let i = num; i > 1; i --) {
+            fatorial *+ i  
+        }
+            return fatorial   //dado de saída 
+        }
+
+        //chamada a função 
+        // a variável  fat4  receberá o resultado da função;
+        // enviada pelo return
+
+        let fat4 = calcFatorial(4)
+        
+        document.write(`4! é igual a ${fat4}. <br>`)
+
+        //chamada de funço sem atribuição a variável 
+        document.write(`6! é igual a ${calcFatorial(6)}. <br>`)
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
