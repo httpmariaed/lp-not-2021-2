@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Formulário DOM</title>
+
+    <style>
+
+         * { /* Todos os elementos */
+
+        font-family: Calibri, Arial, sans-serif;
+    }
+
+label{
+
+    /* Faz com que o label ocupe uma linha inteira e
+
+    empurre o input para baixo*/
+
+    display: block;
+
+}
+
+div, fieldset {
+
+    margin-bottom: 20px;
+
+}
+
+fildset{
+
+    border: 1px solid rgb(109, 137, 165);
+
+    border-radius: 10px; /* Borda arredondada*/
+
+}
+
+fieldset label {
+
+    /* Labels dentro de fieldsets voltam a ser inline*/
+
+    display: inline;
+
+}
+
+</style>
+
+</head>
+
+<body>
+    <h1>Gerador de saudação</h1>
+    
+
+        <label for="primeiro-nome">Primeiro nome</label>
+
+        <input id="primeiro-nome">
+
+    </div>
+
+    <div>
+
+        <label for="Sobrenome">Sobrenome</label>
+
+        <input id="sobrenome">
+
+    </div>
+
+    <div>
+
+        <label for="forma-trat"> Forma de tratamento</label>
+
+        <select id="forma-trat">
+
+            <option>(Selecione)</option>
+
+            <opiton>Vossa Majestade</opiton>
+
+            <option>Excelentíssimo</option>
+
+            <option>Ilustríssimo/a</option>
+
+            <optin>Vossa Senhoria</optin>
+
+            <option>Senhor/a</option>
+
+            <option>Cremosíssimo/a</option>
+
+
+
+        </select>
+
+    </div>
+
+    <fieldset>
+
+        <legend>Sexo</legend>
+
+        <!-- Inputs do tipo radio precisam ter o mesmo name
+
+        para funcionar como um unico conjunto no qual
+
+    apenas uma opção possa estar marcada ao mesmo tempo-->
+
+
+
+        <input id="masculino" type="radio" name="sexo">
+
+        <label for="masculino">Masculino</label> 
+
+        <br>        <input id="feminino" type="radio" name="sexo">
+
+        <label for="feminino">Feminino</label>
+
+        <br>
+
+        <input id="outros" type="radio" name="sexo">
+
+        <label for="outros">Outros</label>
+
+
+
+    </fieldset>
+
+    <div>
+
+        <label for="hora-dia">Hora do dia</label>
+
+        <input id="hora-dia" type="number" min="0" max="23">
+
+    </div>
+
+    <fiedlset>
+
+        <legend>Opções de Exibição:</legend>
+
+        <input id="exibir-alert" type="checkbox">
+
+        <label for="exibir-alert">Exibir com <code>alert()</code></label>
+
+        <br>
+
+        <input id="exibir-document" type="checkbox">
+
+        <label for="exibir-document">Exibir no documento</label>
+
+    </fiedlset>
+
+    <div id = "saudacao">
+        <!--
+            aqui vai aparecer a saudação se a opção "exibir no documento" estiver marcada
+        -->
+    </div>
+
+    <div>
+        <button id = "enviar">Enviar</button>
+    </div>
+<!--
+  Primeiro nome: Maria
+  Sobrenome: Catupirina
+  Forma de tratamento: Excelentíssimo/a
+  Sexo: Feminino
+  Hora do dia: 20
+  [X] Exibir com alert()
+  [X] Exibir no documento
+  Boa noite, Excelentíssima Maria Catupirina! Como posso ser útil?
+-->
+<script>
+    // capturar os elementos do HTML 
+
+    const primeiroNome = document.querySelector ('#primeiro-nome')
+    const sobrenome = document.querySelector('#sobrenome')
+    const formaTrat = document.queryselect ('#forma-Trat')
+    const masculino = document.querySelector('#masculino')
+    const feminino = document.querySelector('#feminino')
+
+    const horaDia = document.getElementById ('hora-dia')
+    const exibirAlert = document.getElementById ('exibir-alert')
+    const exibirDocumento = document.getElementById('exibir-documento')
+    const saudadacao = document.getElementById('saudacao')
+    const enviar = document.geeElementById ('enviar')
+
+
+    //verifica se todas as informações necessárias foram 
+    //preenchidas no formulário 
+    function validar() {
+
+        //primeiro nome 
+        if(primeiroNome.value === '' ){
+            alert('O primeiro nome precisa ser preenchido.')
+            primeiroNome.focus()
+            return false // o formulário contém erro 
+        }
+
+        //sobrenome 
+        if(sobrenome.value === ''){
+            alert('O sobrenome precisa ser preenchido.')
+            sobrenome.focus()
+            return false
+        }
+
+        // forma de tratamento 
+        if(formaTrat.selectedIndex <= 0) {
+        alert('Selecione uma forma de tratamento.')
+        formaTrat.focus()
+        return false
+        }
+
+        //hora do dia 
+        let valHoraDia = parseInt(horaDia.value)
+        if(isNaN(valHoraDia) || valHoraDia < 0 || valHoraDia > 23 ){
+            alert('A hora do dia deve ter um valor entre 0 e 23.')
+            horaDia.focus()
+            return false
+        }
+
+        // opções de exibição 
+        if((!exibirAlert.checked) && (! exibirDocumento.checked )) {
+            alert('Pelo menos uma das opções de exibição deve estar marcada.')
+            exibirAlert.focus()
+            return false
+        }
+
+        return true        //o formulário é válido 
+    }
+    function montarSaudacao () {
+
+    }
+
+    enviar.addEventListener('click' , montarSaudacao)
+
+</script>
+</body>
+
+</html>
+
