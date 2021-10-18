@@ -11,12 +11,16 @@
     <h1>
         Document Object Model (DOM)
     </h1>
-
+        <!--
+            O id é um atributo que identifica unicamente um elemento dentro da página
+            Portanto,dois elementos não podem ter o mesmo id
+            O id pode ser adicionado a qualquer elemento.
+        -->
     <ol>
-        <li>São Paulo</li>
-        <li>Minas Gerais</li>
-        <li>Rio de Janeiro</li>
-        <li>Espírito Santo</li>
+        <li id ='Sp'> São Paulo</li>
+        <li id = 'Mg'>Minas Gerais</li>
+        <li id = 'Rj'>Rio de Janeiro</li>
+        <li id = 'Es'>Espírito Santo</li>
     </ol>
     <script>
         //Manipular o DOM 
@@ -36,6 +40,20 @@
 
         //troca da cor do TERCEIRO item
         itens[2].style.color = 'blue'
+
+        //Capturando um elemento pelo seu id - existem duas maneiras
+        let itemMg = document.getElementById('mg') //forma clássica
+        itemMg.style.Color = 'darkgreen'
+
+        // Forma moderna - note  que é necessário colocar # antes do id 
+        let itemEs = document.querySelector('#es')
+        itemEs.style.fontWeight = 'bold'
+
+        let listaOrd = document.querySelector('#estados')
+
+        //muda o marcador da lista para letras em maiúsculo 
+        listaOrd.style.listStyleType = 'upper-alpha'
+    
     </script>
 </body>
 </html>
