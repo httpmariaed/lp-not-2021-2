@@ -85,7 +85,7 @@
         <input id="exibir-alert" type="checkbox">
         <label for="exibir-alert">Exibir com alert ()</label>
         <br>
-        <input id="exibir-document" type="checkbox">
+        <input id="exibir-documento" type="checkbox">
         <label for="exibir-documento">Exibir no documento</label>
 
     </fieldset>
@@ -102,8 +102,135 @@
     <script>
         //capturar os elementos html
         //capturar todos que tem ID 
+        const primeiroNome = document.querySelector('#primeiro-nome')
+        const sobrenome = document.querySelector('#sobrenome')
+        const formaTrat = document.querySelector('#forma-trat')
+        const masculino = document.querySelector('#masculino')
+        const feminino = document.querySelector('#feminino')
         
-    </script>
+        // Aqui iremos capturar por getElementById
+        const horaDia = document.getElementById('hora-dia')
+        const exibirAlert = document.getElementById('exibir-alert')
+        const exibirDocumento = document.getElementById('exibir-documento')
+        const saudacao = document.getElementById('saudacao')
+        const enviar = document.getElementById('enviar')
+
+        //função para validar (verificar se todas as informações necessárias foram preenchidas)
+        function validar(){
+            // Primeiro nome 
+            if(primeiroNome.value === '') {
+                alert('O primeiro nome precisa ser preenchido.')
+                primeiroNome.focus()
+                return false  // O formulário tem erro 
+             }
+             // Sobrenome
+             if(sobrenome.value === '') {
+                 alert('O sobrenome precisa ser preenchido.')
+                 sobrenome.focus()
+                 return false // O formulário tem erro
+
+            } 
+            //forma de tratamento
+            if(formaTrat.selectedIndex <= 0) {
+                alert('A forma de tratamento precisa ser selecionada.')
+                formaTrat.focus()
+                return false //O formulário tem erro
+            }
+            //hora do dia 
+            let valHoraDia =  parseInt(horaDia.value)
+            if(isNaN(valHoraDia) || valHoraDia < 0 || valHoraDia > 23 ){
+                alert('A hora do dia tem que ser um valor entre 0 e 23.')
+                horaDia.focus()
+                return false 
+            }
+
+            //Opções de exibição
+            if((! exibirAlert.checked) && (!exibirDocumento.checked)){
+                alert('Pelo menos uma das opções de exibição deve estar marcada.')
+                exibirAlert.focus()
+                return false
+            }
+            //formulário válido 
+            return true // O formulário é válido
+
+
+        }
+
+        //função para montar a saudação.
+        
+
+        function montarSaudacao() {
+            // Só continua se o formulário for válido
+            if(validar()){
+
+            let textoSaudacao = ''
+
+            if(horaDia.value < 12 ) {
+                textoSaudacao = 'Bom dia, '
+            }
+            else if (horaDia.value < 18 ){
+                textoSaudacao = 'Boa tarde, '
+            }
+            else 
+                textoSaudacao = 'Boa noite'
+        
+            
+            switch(formaTrat.selectedIndex) {
+                case 1: textoSaudacao += 'Vossa majestade '
+                    break
+                case 2: 
+                    if(masculino.checked){
+                        textoSaudacao += 'Exelentísso '
+                    }
+                    else {
+                        textoSaudacao += 'Exelentíssima '
+                    }
+                    break
+                case 3: 
+                    if(masculino.checked){
+                        textoSaudacao += 'Ilustríssimo '
+                    }
+                    else {
+                        textoSaudacao += 'Ilustríssima '
+                    }
+                    break
+                case 4: 
+                    textoSaudacao += 'Vossa senhoria '
+                    break 
+                case 5: 
+                    if(masculino.checked){
+                        textoSaudacao += 'Senhor '
+                    }
+                    else{
+                        textoSaudacao += 'Senhora '
+                    }
+                    break
+                default: //caso 6
+                    if(masculino.checked){
+                        textoSaudacao += 'Cremosíssimo '
+                    }
+                    else{
+                        textoSaudacao += 'Cremosíssima '
+                    }
+            }
+        
+
+            textoSaudacao += primeiroNome.value + ' ' + sobrenome.value + '! '
+            textoSaudacao += 'Como posso ser útil?'
+
+
+            if(exibirAlert.checked) {
+                alert(textoSaudacao)
+            }
+
+            if(exibirDocumento.checked) {
+                saudacao.textContent = textoSaudacao
+            }
+        }
+    }
+            enviar.addEventListener('click', montarSaudacao)
+
+        </script>
 
 
 
