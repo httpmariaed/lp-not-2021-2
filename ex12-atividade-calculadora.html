@@ -35,13 +35,103 @@
 
     <div>
         <button id="calcular">Calcular</button>
+        <button id="limpar">Limpar</button>
     </div>
     <!-- aqui vamos adicionar os 'eventos necessários para a conclusão da calculadora:' -->
     
 
     <div id="resultado"></div>
 
-    
+    <script>
+        //capturar elementos do html
+        const num1 = document.getElementById('num1')
+        const oper = document.getElementById('oper')
+        const num2 = document.getElementById('num2')
+        // com o Queryselector 
+        const calcular = document.querySelector('#calcular')
+        const resultado = document.querySelector('#resultado')
+        const limpar = document.querySelector('#limpar')
+
+        let valNum1, valNum2
+        function validar (){
+            
+            //limpar qualquer resultado que já estiver sendo exibido na div de resultado
+            resultado.textContent = ''
+            //conversão
+            //parsefloat() e number() tem o mesmo efeito 
+            valNum1 = parseFloat(num1.value)
+            valNum2 = parseFloat(num2.value)
+
+            //Exibe as variáveis no console
+            console.log({valNum1, valNum2})
+           
+            //num 1
+            if(isNaN(valNum1)){
+                alert('Informe um número válido')
+                num1.focus 
+                return false 
+            }
+            //num 2
+            if(isNaN(valNum2)){
+                alert('Informe um número válido')
+                num2.focus 
+                return false
+            }
+            //Operação 
+            if(oper.selectedIndex <= 0) {
+                alert('Selecione uma operação')
+                oper.focus()
+                return false 
+            }
+            //Validação OK 
+           return true 
+        }
+
+        function efetuarOperacao (){
+            if(validar()){
+
+                //valNum1 = parseFloat(num1.value)
+                //valNum2 = parseFloat(num2.value)
+
+                let res 
+                switch(oper.selectedIndex) {
+                    case 1:  //Adição
+                        res = valNum1 + valNum2
+                        break
+                    case 2:  //Subtração
+                        res= valNum1 - valNum2
+                        break
+                    case 3:  //Multiplicação
+                        res= valNum1 * valNum2
+                        break
+                    default: //Divisão
+                        res = valNum1 / valNum2
+                }
+                //Limitar o resultado a 3   casas decimais
+                //resultado.textContent = res.toFixed(3)
+
+                //resultado.textContent = res.toLocaleString('pt-br' ,{minimumFractionDigits : 4})
+                
+                //textContent vs. innerText: mesmo efeito 
+                //InnerText n é interpreta HTML, já o InnerHTML interpreta
+                resultado.innerHTML = '<strong>' + res.toLocaleString('pt-br') + '<strong>'
+
+            }
+        }
+        function limparValores(){
+            num1.value = ''
+            oper.selectedIndex = 0 
+            num2.value =''
+            resultado.textContent =''
+            num1.focus()
+
+        }
+
+        calcular.addEventListener('click', efetuarOperacao)
+        limpar.addEventListener('click', limparValores)
+
+
+    </script>
     
 </body>
 </html>
