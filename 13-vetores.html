@@ -103,17 +103,76 @@
         //Parâmetros
         //1°: Posição para remoção 
         //2°: Quantidade de elementos a remover (1+)
-        let removido4 = carro.splice(4, 1)
+        let removido4 = carros.splice(4, 1)
         document.write(`Removido da posição 4: ${removido4} <br>`)
         document.write(carros + '<br>')
 
-        let removidos123 = carro.splice(1, 3)
+        let removidos123 = carros.splice(1, 3)
         document.write(`Removidos 1, 2, 3: ${removidos123} <br>`)
         document.write(carros + '<br>')
 
         //Usando splice () para substituição 
         carros.splice(2, 1, 'Santana')
         document.write(carros + '<br>')
+
+        document.write('<hr>')  
+        /* Percursos de vetor 
+           Percorrer um vetor significa "visitar" cada um dos seus elementos e fazer algo com eles;
+        */
+
+        /* 1° Forma de percurso tradicional */
+        for(let i = 0; i < carros.length; i++) {
+            //exibir cada um dos carros em letras maiúsculas 
+            document.write(carros[i].toUpperCase() + '<br>')
+        }
+
+        document.write('<hr>')  
+
+        // 2° forma (vetor decrescente) forma tradicional porém reversa  
+        for(let i = carros.length -1; i >= 0 ;i--) {
+        //exibir cada um dos elementos em letras minúsculas 
+        document.write(carros[i].toLowerCase() + '<br>')
+        }
+
+        document.write('<hr>')  
+        
+        //3° forma: FOR...OF
+        //Desta forma sempre percorre o vetor inteiro em ordem crescente 
+        for(let c of carros) {
+            //exibindo os nomes entre colchetes
+        document.write('[' + c + ']<br>')
+        }
+
+        document.write ('<hr>')
+
+        for(let fruta of frutas ){
+        document.write(fruta.toUpperCase() + '<br>')
+        }
+
+        document.write('<hr>')  
+
+        //4° forma: forEach()
+        //forEach() executa uma função para cada elemento do vetor 
+        frutas.forEach(function(fruta) {
+            document.write(fruta.toLowerCase() + '<br>')
+        })
+
+        document.write('<hr>')  
+
+        ////////////////////////////////////////////////////
+        //Verificando a posição do valor em um vetor: indexOf()
+        document.write(`A posição de "Santana" em carros: ${carros.indexOf('Santana')}`)
+
+        document.write('<hr>') 
+
+        document.write(`A posição de "Melancia" em frutas: ${frutas.indexOf('Melancia')}`)
+
+        ///////////////////////////////////////////////////////
+        //Verificando se um valor existe ou não no vetor: includes 
+        //Retora true ou false 
+        document.write ('<hr>')
+        document.write(`"Maverick" existe dentro de carros? ${carros.includes('Maverick')}`)
+
 </script>
 </head>
 <body>
